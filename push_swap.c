@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/09 23:05:39 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/12 00:51:16 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,13 @@ int	ft_check_error(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
+	t_list	*a;
+	t_list	*b;
+	
 	if (argc < 2)
 		return (1);
 	if (ft_check_error(argc, argv) == -1)
 		return (1);
-	return (0);
+	stack_init(&a, argv);
 
 }

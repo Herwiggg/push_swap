@@ -26,6 +26,7 @@ int					ft_check_nbrs(char *str);
 int					ft_check_int(char *str);
 int					ft_check_doubles(char **argv);
 int					ft_check_error(int argc, char **argv);
+int					ft_is_already_sorted(char **argv);
 
 /*-------Lists-------*/
 t_list				*ft_lstnew(int nbr);
@@ -39,5 +40,7 @@ void	ft_ss(t_list **a, t_list **b);
 void	ft_pa_pb(t_list **list);
 void	ft_ra_rb(t_list **list);
 void	ft_rr(t_list **a, t_list **b);
+void	ft_rra_rrb(t_list **list);
+void	ft_rrr(t_list **a, t_list **b);
 
 #endif

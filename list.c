@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:10:04 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/12 00:49:12 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/13 02:55:23 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,15 @@ void	stack_init(t_list **list, char **argv)
 {
 	int	i;
 	t_list *new_case;
-	
+	int	rank;
+
+	rank = 0;
 	i = 1;
 	while (argv[i])
 	{
 		new_case = ft_lstnew(ft_atoi(argv[i]));
 		ft_lstadd_back(list, new_case);
 		i++;
+		rank++;
 	}
 }

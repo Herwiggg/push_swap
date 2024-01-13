@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/12 00:51:16 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/12 19:16:08 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	main(int argc, char **argv)
 	
 	if (argc < 2)
 		return (1);
-	if (ft_check_error(argc, argv) == -1)
+	if (ft_check_error(argc, argv) == -1 || ft_is_already_sorted(argv) == -1)
 		return (1);
 	stack_init(&a, argv);
 

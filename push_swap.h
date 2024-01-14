@@ -30,6 +30,7 @@ int					ft_is_already_sorted(char **argv);
 
 /*-------Lists-------*/
 t_list				*ft_lstnew(int nbr);
+void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_free_list(t_list **list);
 void				stack_init(t_list **list, char **argv);

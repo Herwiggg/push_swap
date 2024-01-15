@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:11:44 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/12 19:14:18 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:03:23 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,21 @@ int	ft_is_already_sorted(char **argv)
 			return (0);
 	}
 	return (-1);
+}
+
+int	ft_count_tabs(char **tab)
+{
+	int	i;
+	int	j;
+	i = 0;
+
+	while (tab[i])
+	{
+		j = 0;
+		while (tab[i][j])
+			j++;
+		i++;
+	}
+	return (i);
 }
 

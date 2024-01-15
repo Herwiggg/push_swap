@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/12 19:16:08 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:08:21 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,17 @@ int	main(int argc, char **argv)
 	t_list	*a;
 	t_list	*b;
 	
-	if (argc < 2)
+	if (argc < 2 || (argv = 2 && !argv[1][0]))
 		return (1);
+	else if (argc == 2)
+		argv = ft_split(argv[1], ' ');
 	if (ft_check_error(argc, argv) == -1 || ft_is_already_sorted(argv) == -1)
-		return (1);
+		{
+			if (argc == 2)
+				ft_doublefree(argv, ft_count_tabs(argv));
+			return (1);
+		}
 	stack_init(&a, argv);
 
+	
 }

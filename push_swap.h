@@ -36,7 +36,8 @@ char				**ft_split(char const *s, char c);
 /*-------Commands-------*/
 int					ft_sa_sb(t_list **list);
 void				ft_ss(t_list **a, t_list **b);
-int					ft_pa_pb(t_list **list);
+int					ft_pa(t_list **a, t_list **b);
+int					ft_pb(t_list **a, t_list **b);
 int					ft_ra_rb(t_list **list);
 void				ft_rr(t_list **a, t_list **b);
 int					ft_rra_rrb(t_list **list);

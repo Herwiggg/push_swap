@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/15 19:08:21 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/15 19:13:48 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	main(int argc, char **argv)
 		{
 			if (argc == 2)
 				ft_doublefree(argv, ft_count_tabs(argv));
+			write(2, "Error\n", 6);
 			return (1);
 		}
 	stack_init(&a, argv);

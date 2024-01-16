@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/16 01:45:12 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:44:36 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,15 @@
 
 void	tiny_sort(t_list **a)
 {
-	t_list *head;
-	t_list *second;
-	t_list *third;
+	t_list *highest_node;
 
-	head = *a;
-	second = head->next;
-	third = second->next;
-	if (head->nbr > second->nbr && head->nbr > third->nbr)
-		ft_ra_rb(a);
-	else if (second->nbr > third->nbr)
-		ft_rra_rrb(a);
-	if ()
-	
-
+	highest_node = biggest_node(a);
+	if (*a == highest_node)
+		ft_ra_rb(a, 1);
+	else if ((*a)->next == highest_node)
+		ft_rra_rrb(a, 1);
+	if ((*a)->nbr > (*a)->next->nbr)
+		ft_sa_sb(a, 1);
 }
 int	ft_check_error(int argc, char **argv)
 {
@@ -75,7 +70,7 @@ int	main(int argc, char **argv)
 	{
 		stack_init(&a, argv);
 		if (stack_len(&a) == 2)
-			ft_sa_sb(&a);
+			ft_sa_sb(&a, 1);
 		else if (stack_len(&a) == 3)
 			tiny_sort(&a);
 		//else

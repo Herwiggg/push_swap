@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:11:44 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/15 21:22:02 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:21:29 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,25 @@ int stack_len(t_list **list)
 		head = head->next;
 	}
 	return (i);
+}
+t_list *biggest_node(t_list **list)
+{
+	t_list *head;
+	int		big_nbr;
+	t_list	*temp;
+
+	head = *list;
+	temp = head;
+	big_nbr = head->nbr;
+	head = head->next;
+	while (head)
+	{
+		if (head->nbr > big_nbr)
+		{
+			big_nbr = head->nbr;
+			temp = head;
+		}
+		head = head->next;
+	}
+	return (temp);
 }

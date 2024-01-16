@@ -33,15 +33,16 @@ char				**ft_strcpy(char **tab, const char *s, char c);
 char				**ft_doublefree(char **tab, int k);
 char				**ft_split(char const *s, char c);
 int 				stack_len(t_list **list);
+t_list 				*biggest_node(t_list **list);
 
 /*-------Commands-------*/
-int					ft_sa_sb(t_list **list);
+int					ft_sa_sb(t_list **list, int flag);
 void				ft_ss(t_list **a, t_list **b);
 int					ft_pa(t_list **a, t_list **b);
 int					ft_pb(t_list **a, t_list **b);
-int					ft_ra_rb(t_list **list);
+int					ft_ra_rb(t_list **list, int flag);
 void				ft_rr(t_list **a, t_list **b);
-int					ft_rra_rrb(t_list **list);
+int					ft_rra_rrb(t_list **list, int flag);
 void				ft_rrr(t_list **a, t_list **b);
 
 #endif

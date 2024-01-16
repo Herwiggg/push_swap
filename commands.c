@@ -6,13 +6,13 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 00:52:25 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/15 23:48:27 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:49:03 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_sa_sb(t_list **list)
+int	ft_sa_sb(t_list **list, int flag)
 {
 	t_list	*first;
 	t_list	*second;
@@ -35,14 +35,18 @@ int	ft_sa_sb(t_list **list)
 		second->prev->next = second;
 	else
 		*list = second;
-	write(1, "sa\n", 3);
+	if (flag == 1)
+		write(1, "sa\n", 3);
+	else if (flag == 2)
+		write(1, "sb\n", 3);
 	return (0);
 }
 
 void	ft_ss(t_list **a, t_list **b)
 {
-	ft_sa_sb(a);
-	ft_sa_sb(b);
+	ft_sa_sb(a, 3);
+	ft_sa_sb(b, 3);
+	write(1, "ss\n", 3);
 }
 
 int	ft_pa(t_list **a, t_list **b)
@@ -59,6 +63,7 @@ int	ft_pa(t_list **a, t_list **b)
 	head_b->next = head_a;
 	head_b->prev = NULL;
 	*a = head_b;
+	write(1, "pa\n", 3);
 	return (0);
 }
 
@@ -77,10 +82,11 @@ int	ft_pb(t_list **a, t_list **b)
 	head_a->next = head_b;
 	head_a->prev = NULL;
 	*b = head_a;
+	write(1, "pb\n", 3);
 	return (0);
 }
 
-int	ft_ra_rb(t_list **list)
+int	ft_ra_rb(t_list **list, int flag)
 {
 	t_list	*head;
 
@@ -91,5 +97,9 @@ int	ft_ra_rb(t_list **list)
 	head->next->prev = NULL;
 	head->next = NULL;
 	ft_lstadd_back(list, head);
+	if (flag == 1)
+		write(1, "ra\n", 3);
+	else if (flag == 2)
+		write(1, "rb\n", 3);
 	return (0);
 }

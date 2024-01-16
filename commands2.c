@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 01:04:23 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/15 13:28:08 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/16 13:49:46 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,12 @@
 
 void	ft_rr(t_list **a, t_list **b)
 {
-	ft_ra_rb(a);
-	ft_ra_rb(b);
+	ft_ra_rb(a, 3);
+	ft_ra_rb(b, 3);
+	write(1, "rr\n", 3);
 }
 
-int	ft_rra_rrb(t_list **list)
+int	ft_rra_rrb(t_list **list, int flag)
 {
 	t_list *back;
 	t_list	*before_back;
@@ -35,12 +36,17 @@ int	ft_rra_rrb(t_list **list)
 	}
 	before_back->next = NULL;
 	ft_lstadd_front(list, back);
+	if (flag == 1)
+		write(1, "rra\n", 3);
+	else if (flag == 2)
+		write(1, "rrb\n", 3);
 	return (0);
 	
 }
 
 void	ft_rrr(t_list **a, t_list **b)
 {
-	ft_rra_rrb(a);
-	ft_rra_rrb(b);
+	ft_rra_rrb(a, 3);
+	ft_rra_rrb(b, 3);
+	write(1, "rrr\n", 4);
 }

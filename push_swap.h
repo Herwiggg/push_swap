@@ -32,6 +32,7 @@ int					ft_count_words(const char *s, char c);
 char				**ft_strcpy(char **tab, const char *s, char c);
 char				**ft_doublefree(char **tab, int k);
 char				**ft_split(char const *s, char c);
+int 				stack_len(t_list **list);
 
 /*-------Commands-------*/
 int					ft_sa_sb(t_list **list);

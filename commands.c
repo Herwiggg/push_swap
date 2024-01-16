@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 00:52:25 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/15 16:55:17 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/15 23:48:27 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	ft_sa_sb(t_list **list)
 		second->prev->next = second;
 	else
 		*list = second;
+	write(1, "sa\n", 3);
 	return (0);
 }
 

@@ -45,4 +45,9 @@ void				ft_rr(t_list **a, t_list **b);
 int					ft_rra_rrb(t_list **list, int flag);
 void				ft_rrr(t_list **a, t_list **b);
 
+/*-------Algo-------*/
+void	tiny_sort(t_list **a);
+void	big_sort(t_list **a, t_list **b);
+void	ft_push_to_b(t_list **a, t_list **b);
+
 #endif

@@ -6,13 +6,17 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/16 13:44:36 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/19 01:34:51 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
+void	big_sort(t_list **a, t_list **b)
+{
+	ft_push_to_b(a, b);
+}
 void	tiny_sort(t_list **a)
 {
 	t_list *highest_node;
@@ -25,6 +29,7 @@ void	tiny_sort(t_list **a)
 	if ((*a)->nbr > (*a)->next->nbr)
 		ft_sa_sb(a, 1);
 }
+
 int	ft_check_error(int argc, char **argv)
 {
 	int i = 0;

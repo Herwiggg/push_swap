@@ -6,12 +6,11 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:11:44 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/16 13:21:29 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/19 01:35:00 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 int	ft_is_already_sorted(char **argv)
 {
@@ -79,4 +78,17 @@ t_list *biggest_node(t_list **list)
 		head = head->next;
 	}
 	return (temp);
+}
+
+void	ft_push_to_b(t_list **a, t_list **b)
+{
+	int	i;
+
+	i = stack_len(a);
+
+	while (i > 2)
+	{
+		ft_pb(a, b);
+		i--;
+	}
 }

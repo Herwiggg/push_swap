@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:10:04 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/14 22:02:49 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/20 01:39:09 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*ft_lstnew(int nbr)
 	if (!list)
 		return (NULL);
 	list->nbr = nbr;
+	list->target_node = NULL;
 	list->next = NULL;
 	list->prev = NULL;
 	return (list);

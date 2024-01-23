@@ -6,16 +6,39 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/19 01:34:51 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/23 02:19:15 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
+
+void	ft_push_to_b(t_list **a, t_list **b)
+{
+	int	i;
+
+	i = stack_len(a);
+	while (i > 2)
+	{
+		ft_pb(a, b);
+		i--;
+	}
+}
 
 void	big_sort(t_list **a, t_list **b)
 {
+	t_list	*head_b;
+
+	head_b = *b;
 	ft_push_to_b(a, b);
+	tiny_sort(a);
+	while (*b != NULL)
+	{
+		find_target_node(a, head_b);
+		refreshing_rank_and_mediane(a);
+		refreshing_rank_and_mediane(b);
+		set_price(a, b);
+		find_the_cheapest(b);
+	}
 }
 void	tiny_sort(t_list **a)
 {
@@ -78,8 +101,8 @@ int	main(int argc, char **argv)
 			ft_sa_sb(&a, 1);
 		else if (stack_len(&a) == 3)
 			tiny_sort(&a);
-		//else
-		//	big_sort(&a, &b);
+		else
+			big_sort(&a, &b);
 		if (argc == 2)
 			ft_doublefree(argv, ft_count_tabs(argv));
 	}

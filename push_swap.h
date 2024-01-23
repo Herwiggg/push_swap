@@ -1,6 +1,7 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
 
@@ -8,6 +9,10 @@ typedef struct s_list
 {
 	int				nbr;
 	int				rank;
+	int				push_price;
+	int				mediane;
+	int 			cheapest;
+	struct s_list	*target_node;
 	struct s_list	*next;
 	struct s_list	*prev;
 }					t_list;
@@ -32,8 +37,8 @@ int					ft_count_words(const char *s, char c);
 char				**ft_strcpy(char **tab, const char *s, char c);
 char				**ft_doublefree(char **tab, int k);
 char				**ft_split(char const *s, char c);
-int 				stack_len(t_list **list);
-t_list 				*biggest_node(t_list **list);
+int					stack_len(t_list **list);
+t_list				*biggest_node(t_list **list);
 
 /*-------Commands-------*/
 int					ft_sa_sb(t_list **list, int flag);
@@ -46,8 +51,14 @@ int					ft_rra_rrb(t_list **list, int flag);
 void				ft_rrr(t_list **a, t_list **b);
 
 /*-------Algo-------*/
-void	tiny_sort(t_list **a);
-void	big_sort(t_list **a, t_list **b);
-void	ft_push_to_b(t_list **a, t_list **b);
+void				tiny_sort(t_list **a);
+void				big_sort(t_list **a, t_list **b);
+void				ft_push_to_b(t_list **a, t_list **b);
+void				*find_target_node(t_list **a, t_list *head_b);
+t_list				*the_smallest_node_in_a(t_list **a, t_list *target_node);
+int					list_len(t_list **list);
+void				insert_mediane(t_list **list, int mediane_pos);
+void				refreshing_rank_and_mediane(t_list **list);
+void				set_price(t_list **a, t_list **b);
 
 #endif

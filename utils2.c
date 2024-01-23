@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:11:44 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/19 01:35:00 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/19 18:36:09 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,15 +80,3 @@ t_list *biggest_node(t_list **list)
 	return (temp);
 }
 
-void	ft_push_to_b(t_list **a, t_list **b)
-{
-	int	i;
-
-	i = stack_len(a);
-
-	while (i > 2)
-	{
-		ft_pb(a, b);
-		i--;
-	}
-}

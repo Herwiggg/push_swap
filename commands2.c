@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 01:04:23 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/16 13:49:46 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/24 02:11:31 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ int	ft_rra_rrb(t_list **list, int flag)
 	before_back->next = NULL;
 	ft_lstadd_front(list, back);
 	if (flag == 1)
-		write(1, "rra\n", 3);
+		write(1, "rra\n", 4);
 	else if (flag == 2)
-		write(1, "rrb\n", 3);
+		write(1, "rrb\n", 4);
 	return (0);
 	
 }

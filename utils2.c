@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:11:44 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/19 18:36:09 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/24 00:55:33 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ t_list *biggest_node(t_list **list)
 	int		big_nbr;
 	t_list	*temp;
 
+	 if (!list || !*list)
+        return NULL;
 	head = *list;
 	temp = head;
 	big_nbr = head->nbr;

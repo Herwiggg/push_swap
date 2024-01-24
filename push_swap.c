@@ -6,11 +6,38 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/23 02:19:15 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/24 02:09:17 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+
+void	big_sort(t_list **a, t_list **b)
+{
+	t_list	*head_b;
+	t_list	*the_smallest;
+	
+	head_b = *b;
+	ft_push_to_b(a, b);
+	tiny_sort(a);
+	while (*b != NULL)
+	{
+		find_target_node(a, head_b);
+		refreshing_rank_and_mediane(a);
+		refreshing_rank_and_mediane(b);
+		set_price(a, b);
+		find_the_cheapest(b);
+		move_nodes(a,b);
+	}
+	the_smallest = find_the_smallest(a);
+	if (the_smallest->mediane == 1)
+		while (*a != the_smallest)
+			ft_ra_rb(a, 1);
+	else
+		while (*a != the_smallest);
+			ft_rra_rrb(a, 1);
+}
 
 void	ft_push_to_b(t_list **a, t_list **b)
 {
@@ -24,34 +51,21 @@ void	ft_push_to_b(t_list **a, t_list **b)
 	}
 }
 
-void	big_sort(t_list **a, t_list **b)
-{
-	t_list	*head_b;
-
-	head_b = *b;
-	ft_push_to_b(a, b);
-	tiny_sort(a);
-	while (*b != NULL)
-	{
-		find_target_node(a, head_b);
-		refreshing_rank_and_mediane(a);
-		refreshing_rank_and_mediane(b);
-		set_price(a, b);
-		find_the_cheapest(b);
-	}
-}
 void	tiny_sort(t_list **a)
 {
 	t_list *highest_node;
+	t_list *head_a;
 
+	head_a = *a;
 	highest_node = biggest_node(a);
-	if (*a == highest_node)
+	if (head_a == highest_node)
 		ft_ra_rb(a, 1);
-	else if ((*a)->next == highest_node)
+	else if (head_a->next == highest_node)
 		ft_rra_rrb(a, 1);
 	if ((*a)->nbr > (*a)->next->nbr)
 		ft_sa_sb(a, 1);
 }
+
 
 int	ft_check_error(int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 02:11:18 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/23 02:17:14 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/24 00:31:32 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	*find_target_node(t_list **a, t_list *head_b)
 t_list	*the_smallest_node_in_a(t_list **a, t_list *target_node)
 {
 	t_list	*head_a;
-	int		stock_nbr;
+	long		stock_nbr;
 
 	head_a = *a;
 	stock_nbr = LONG_MAX;
@@ -89,7 +89,7 @@ void	set_price(t_list **a, t_list **b)
 	int		len_b;
 
 	len_a = list_len(a);
-	len_b = list(b);
+	len_b = list_len(b);
 	head_a = *a;
 	head_b = *b;
 	while (head_b)

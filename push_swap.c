@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/25 01:26:41 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/25 03:35:31 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	big_sort(t_list **a, t_list **b)
 	tiny_sort(a);
 	while (*b != NULL)
 	{
-		find_target_node(a, head_b);
+		find_target_node(a, b);
 		refreshing_rank_and_mediane(a);
 		refreshing_rank_and_mediane(b);
 		set_price(a, b);
@@ -31,7 +31,7 @@ void	big_sort(t_list **a, t_list **b)
 		move_nodes(a,b);
 	}
 	the_smallest = find_the_smallest(a);
-	if (the_smallest->mediane == 1)
+	if (the_smallest->mediane == 0)
 		while (*a != the_smallest)
 			ft_ra_rb(a, 1);
 	else
@@ -58,7 +58,6 @@ void	tiny_sort(t_list **a)
 	t_list *highest_node;
 	t_list *head_a;
 	
-	//printf("o0000\n");
 	head_a = *a;
 	highest_node = biggest_node(a);
 	if (head_a == highest_node)

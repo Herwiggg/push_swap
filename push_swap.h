@@ -57,7 +57,7 @@ void				tiny_sort(t_list **a);
 void				big_sort(t_list **a, t_list **b);
 /*! : init nodes*/
 void				ft_push_to_b(t_list **a, t_list **b);
-void				*find_target_node(t_list **a, t_list *head_b);
+void				*find_target_node(t_list **a, t_list **b);
 t_list				*the_smallest_node_in_a(t_list **a);
 int					list_len(t_list **list);
 void				insert_mediane(t_list **list, int mediane_pos);

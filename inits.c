@@ -6,19 +6,20 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 02:11:18 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/25 01:46:35 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/25 03:31:13 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	*find_target_node(t_list **a, t_list *head_b)
+void	*find_target_node(t_list **a, t_list **b)
 {
 	t_list	*head_a;
 	t_list	*target_node;
 	long	best_match;
-
-	printf("aaaa\n");
+	t_list	*head_b;
+	
+	head_b = *b;
 	head_a = *a;
 	while (head_b)
 	{
@@ -98,9 +99,9 @@ void	set_price(t_list **a, t_list **b)
 	while (head_b)
 	{
 		head_b->push_price = head_b->rank;
-		if (head_b->mediane == 0)
+		if (head_b->mediane == 1)
 			head_b->push_price = len_b - (head_b->rank);
-		if (head_b->target_node->mediane == 1)
+		if (head_b->target_node->mediane == 0)
 			head_b->push_price += head_b->target_node->rank;
 		else
 			head_b->push_price += len_a - (head_b->target_node->rank);
@@ -117,8 +118,6 @@ void	find_the_cheapest(t_list **b)
 	if (!b || !*b) 
         return;
 	head_b = *b;
-	if (b == NULL)
-		return;
 	best_match = LONG_MAX;
 	while (head_b)
 	{

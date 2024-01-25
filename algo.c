@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:46:18 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/24 00:01:00 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/25 03:32:32 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_list	*return_cheapest(t_list **b)
 			return (head_b);
 		head_b = head_b->next;
 	}
+	return (NULL);
 }
 
 void	move_nodes(t_list **a, t_list **b)
@@ -32,12 +33,12 @@ void	move_nodes(t_list **a, t_list **b)
 
 	cheapest_node = return_cheapest(b);
 
-	if (cheapest_node->mediane == 1 && cheapest_node->target_node->mediane == 1)
+	if (cheapest_node->mediane != 1 && cheapest_node->target_node->mediane != 1)
 		rotate_both(a, b, cheapest_node);
-	else if ((cheapest_node->mediane != 1 && cheapest_node->target_node->mediane != 1))
+	else if ((cheapest_node->mediane == 1 && cheapest_node->target_node->mediane == 1))
 		reverse_rotate_both(a, b, cheapest_node);
-	finish_rotation(a, cheapest_node, 1);
 	finish_rotation(b, cheapest_node, 2);
+	finish_rotation(a, cheapest_node->target_node, 1);
 	ft_pa(a, b);
 }
 
@@ -58,7 +59,9 @@ void	reverse_rotate_both(t_list **a, t_list **b, t_list *cheapest_node)
 }
 void	finish_rotation(t_list **list, t_list *top_node, int flag)
 {
-	while (*list != top_node)
+	t_list	*head;
+	head = *list;
+	while (head != top_node)
 	{
 		if (flag == 1)
 		{
@@ -67,7 +70,7 @@ void	finish_rotation(t_list **list, t_list *top_node, int flag)
 			else
 				ft_rra_rrb(list, 1);
 		}
-		else if (flag = 2)
+		else if (flag == 2)
 		{
 			if (top_node->mediane == 0)
 				ft_ra_rb(list, 2);

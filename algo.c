@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:46:18 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/25 17:40:34 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/25 18:10:12 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ void	finish_rotation(t_list **list, t_list *top_node, int flag)
 			else
 				ft_rra_rrb(list, 2);
 		}
+		head = *list;
 	}
 	
 }

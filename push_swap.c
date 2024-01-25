@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/25 03:35:31 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/25 19:06:27 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	big_sort(t_list **a, t_list **b)
 		find_the_cheapest(b);
 		move_nodes(a,b);
 	}
+	refreshing_rank_and_mediane(a);
 	the_smallest = find_the_smallest(a);
 	if (the_smallest->mediane == 0)
 		while (*a != the_smallest)
@@ -37,6 +38,7 @@ void	big_sort(t_list **a, t_list **b)
 	else
 		while (*a != the_smallest);
 			ft_rra_rrb(a, 1);
+	ft_ra_rb(a, 1);
 }
 
 void	ft_push_to_b(t_list **a, t_list **b)
@@ -119,6 +121,13 @@ int	main(int argc, char **argv)
 			tiny_sort(&a);
 		else
 			big_sort(&a, &b);
+			//t_list *head_a;
+			//head_a = *a;
+			while (a)
+			{
+				printf("%d\n", a->nbr);
+				a = a->next;
+			}
 		if (argc == 2)
 			ft_doublefree(argv, ft_count_tabs(argv));
 	}

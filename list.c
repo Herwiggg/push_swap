@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:10:04 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/25 02:46:18 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:57:58 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (*lst == NULL)
 	{
 		*lst = new;
+		new->prev = NULL;
 		return ;
 	}
 	while (last->next)
 		last = last->next;
 	last->next = new;
+	new->prev = last;
 }
 
 void	ft_lstadd_front(t_list **lst, t_list *new)

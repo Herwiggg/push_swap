@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:46:18 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/25 03:32:32 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/25 17:40:34 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_list	*return_cheapest(t_list **b)
 {
 	t_list	*head_b;
 
+	if (NULL == b)
+		return (NULL);
 	head_b = *b;
 	while (head_b)
 	{
@@ -44,7 +46,12 @@ void	move_nodes(t_list **a, t_list **b)
 
 void	rotate_both(t_list	**a, t_list **b, t_list *cheapest_node)
 {
-	while (*b != cheapest_node && *a != cheapest_node)
+	t_list *head_a;
+	t_list *head_b;
+
+	head_a = *a;
+	head_b = *b;
+	while (head_b != cheapest_node && head_a != cheapest_node->target_node)
 		ft_rr(a,b);
 	refreshing_rank_and_mediane(a);
 	refreshing_rank_and_mediane(b);
@@ -52,7 +59,12 @@ void	rotate_both(t_list	**a, t_list **b, t_list *cheapest_node)
 
 void	reverse_rotate_both(t_list **a, t_list **b, t_list *cheapest_node)
 {
-	while (*b != cheapest_node && *a != cheapest_node)
+	t_list *head_a;
+	t_list *head_b;
+
+	head_a = *a;
+	head_b = *b;
+	while (head_b != cheapest_node && head_a != cheapest_node->target_node)
 		ft_rrr(a, b);
 	refreshing_rank_and_mediane(a);
 	refreshing_rank_and_mediane(b);	
@@ -78,4 +90,5 @@ void	finish_rotation(t_list **list, t_list *top_node, int flag)
 				ft_rra_rrb(list, 2);
 		}
 	}
+	
 }

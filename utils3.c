@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 23:05:32 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/24 00:27:20 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:34:25 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	list_len(t_list **list)
 	int		i;
 	t_list	*head;
 
+	if (*list == NULL)
+		return (0);
 	head = *list;
 	i = 0;
 	while (head)

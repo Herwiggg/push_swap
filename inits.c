@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 02:11:18 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/25 03:31:13 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/25 16:30:33 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ t_list	*the_smallest_node_in_a(t_list **a)
 	long		stock_nbr;
 	t_list	*target_node;
 
+	if (a == NULL)
+		return (NULL);
 	target_node = NULL; 
 	head_a = *a;
 	stock_nbr = LONG_MAX;

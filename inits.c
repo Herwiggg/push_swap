@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 02:11:18 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/24 00:31:32 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/25 01:46:35 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ void	*find_target_node(t_list **a, t_list *head_b)
 	t_list	*target_node;
 	long	best_match;
 
-	best_match = LONG_MAX;
-	target_node = NULL;
+	printf("aaaa\n");
 	head_a = *a;
 	while (head_b)
 	{
+		best_match = LONG_MAX;
+		target_node = NULL; 
 		head_a = *a;
 		while (head_a)
 		{
@@ -34,18 +35,20 @@ void	*find_target_node(t_list **a, t_list *head_b)
 			head_a = head_a->next;
 		}
 		if (LONG_MAX == best_match)
-			head_b->target_node = the_smallest_node_in_a(a, target_node);
+			head_b->target_node = the_smallest_node_in_a(a);
 		else
 			head_b->target_node = target_node;
 		head_b = head_b->next;
 	}
 }
 
-t_list	*the_smallest_node_in_a(t_list **a, t_list *target_node)
+t_list	*the_smallest_node_in_a(t_list **a)
 {
 	t_list	*head_a;
 	long		stock_nbr;
+	t_list	*target_node;
 
+	target_node = NULL; 
 	head_a = *a;
 	stock_nbr = LONG_MAX;
 	while (head_a)
@@ -97,7 +100,7 @@ void	set_price(t_list **a, t_list **b)
 		head_b->push_price = head_b->rank;
 		if (head_b->mediane == 0)
 			head_b->push_price = len_b - (head_b->rank);
-		if (head_b->mediane == 1)
+		if (head_b->target_node->mediane == 1)
 			head_b->push_price += head_b->target_node->rank;
 		else
 			head_b->push_price += len_a - (head_b->target_node->rank);
@@ -111,6 +114,8 @@ void	find_the_cheapest(t_list **b)
 	long	best_match;
 	t_list	*head_b;
 
+	if (!b || !*b) 
+        return;
 	head_b = *b;
 	if (b == NULL)
 		return;

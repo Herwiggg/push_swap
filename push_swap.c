@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/24 02:09:17 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/25 01:26:41 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,14 @@ void	big_sort(t_list **a, t_list **b)
 void	ft_push_to_b(t_list **a, t_list **b)
 {
 	int	i;
+	int	len;
 
-	i = stack_len(a);
-	while (i > 2)
+	len = stack_len(a);
+	i = 0;
+	while (i < len - 3)
 	{
 		ft_pb(a, b);
-		i--;
+		i++;
 	}
 }
 
@@ -55,7 +57,8 @@ void	tiny_sort(t_list **a)
 {
 	t_list *highest_node;
 	t_list *head_a;
-
+	
+	//printf("o0000\n");
 	head_a = *a;
 	highest_node = biggest_node(a);
 	if (head_a == highest_node)

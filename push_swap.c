@@ -6,12 +6,124 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/25 19:06:27 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/26 17:21:27 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void read_list(t_list *start_a, t_list *start_b)
+{
+    t_list *current = start_a;
+    t_list *current_b = start_b;
+    int i;
+
+    i = 0;
+    printf("\n\033[0;32m////--- STACK A ---\\\\\\\\         \033[0;32m////--- STACK B ---\\\\\\\\\n\n");
+    while (current != NULL || current_b != NULL)
+    {
+        if (current)
+            printf("\033[0;36mMaillon address: \033[0;33m%p\033[0m          ", (void *)current);
+        if (current == NULL)
+            printf("                                        ");
+        if (current_b == NULL)
+            printf("\n");
+        if (current_b != NULL)
+            printf("\033[0;36mMaillon address: \033[0;33m%p\033[0m\n", (void *)current_b);
+        if (current)
+            printf("\033[0;36mContent: \033[0;35m%d\033[0m                     ", current->nbr);
+        if (current == NULL)
+            printf("                                        ");
+        if (current_b == NULL)
+            printf("\n");
+        if (current_b != NULL)
+            printf("\033[0;36mContent: \033[0;35m%d\033[0m\n", current_b->nbr);
+        if (current)
+            printf("\033[0;36mRank: \033[0;35m%d\033[0m                        ", current->rank);
+        if (current == NULL)
+            printf("                                        ");
+        if (current_b == NULL)
+            printf("\n");
+        if (current_b != NULL)
+            printf("\033[0;36mRank: \033[0;35m%d\033[0m\n", current_b->rank);
+
+        // Print statements for additional data members
+        if (current)
+            printf("\033[0;36mPush Price: \033[0;35m%d\033[0m                ", current->push_price);
+        if (current == NULL)
+            printf("                                        ");
+        if (current_b == NULL)
+            printf("\n");
+        if (current_b != NULL)
+            printf("\033[0;36mPush Price: \033[0;35m%d\033[0m\n", current_b->push_price);
+
+        if (current)
+            printf("\033[0;36mMedian: \033[0;35m%d\033[0m                    ", current->mediane);
+        if (current == NULL)
+            printf("                                        ");
+        if (current_b == NULL)
+            printf("\n");
+        if (current_b != NULL)
+            printf("\033[0;36mMedian: \033[0;35m%d\033[0m\n", current_b->mediane);
+
+        if (current)
+            printf("\033[0;36mCheapest: \033[0;35m%d\033[0m                  ", current->cheapest);
+        if (current == NULL)
+            printf("                                        ");
+        if (current_b == NULL)
+            printf("\n");
+        if (current_b != NULL)
+            printf("\033[0;36mCheapest: \033[0;35m%d\033[0m\n", current_b->cheapest);
+
+        if (current)
+            printf("\033[0;36mSmallest: \033[0;35m%d\033[0m                  ", current->smallest);
+        if (current == NULL)
+            printf("                                        ");
+        if (current_b == NULL)
+            printf("\n");
+        if (current_b != NULL)
+            printf("\033[0;36mSmallest: \033[0;35m%d\033[0m\n", current_b->smallest);
+
+        if (current)
+            printf("\033[0;36mTarget Node address: \033[0;33m%p\033[0m       ", (void *)current->target_node);
+        if (current == NULL)
+            printf("                                        ");
+        if (current_b == NULL)
+            printf("\n");
+        if (current_b != NULL)
+            printf("\033[0;36mTarget Node address: \033[0;33m%p\033[0m\n", (void *)current_b->target_node);
+
+        // Add more similar print statements for other data members as needed
+
+        if (current == NULL)
+            printf("                                        ");
+        if (current_b == NULL)
+            printf("\n");
+        if (current)
+            printf("\033[0;36mLast address: \033[0;33m%p\033[0m              ", (void *)current->prev);
+        if (current == NULL)
+            printf("                                        ");
+        if (current_b == NULL)
+            printf("\n");
+        if (current_b)
+            printf("\033[0;36mLast address: \033[0;33m%p\033[0m\n", (void *)current_b->prev);
+        if (current)
+            printf("\033[0;36mNext address: \033[0;33m%p\033[0m              ", (void *)current->next);
+        if (current == NULL)
+            printf("                                        ");
+        if (current_b == NULL)
+            printf("\n");
+        if (current_b)
+            printf("\033[0;36mNext address: \033[0;33m%p\033[0m\n", (void *)current_b->next);
+        if (current == NULL)
+            printf("                                        ");
+        printf("\033[0;31m-------\033[0m\n");
+        if (current)
+            current = current->next;
+        if (current_b)
+            current_b = current_b->next;
+    }
+}
 
 void	big_sort(t_list **a, t_list **b)
 {
@@ -60,14 +172,15 @@ void	tiny_sort(t_list **a)
 	t_list *highest_node;
 	t_list *head_a;
 	
-	head_a = *a;
 	highest_node = biggest_node(a);
+	head_a = *a;
 	if (head_a == highest_node)
 		ft_ra_rb(a, 1);
 	else if (head_a->next == highest_node)
 		ft_rra_rrb(a, 1);
 	if ((*a)->nbr > (*a)->next->nbr)
 		ft_sa_sb(a, 1);
+//	read_list(*a, NULL);
 }
 
 
@@ -123,11 +236,11 @@ int	main(int argc, char **argv)
 			big_sort(&a, &b);
 			//t_list *head_a;
 			//head_a = *a;
-			while (a)
-			{
-				printf("%d\n", a->nbr);
-				a = a->next;
-			}
+		//	while (a)
+		//	{
+		//		printf("%d\n", a->nbr);
+		//		a = a->next;
+		//	}
 		if (argc == 2)
 			ft_doublefree(argv, ft_count_tabs(argv));
 	}

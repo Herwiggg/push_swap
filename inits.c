@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 02:11:18 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/25 16:30:33 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/26 01:38:52 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ void	*find_target_node(t_list **a, t_list **b)
 	head_a = *a;
 	while (head_b)
 	{
-		best_match = LONG_MAX;
-		target_node = NULL; 
+		best_match = LONG_MAX; 
 		head_a = *a;
 		while (head_a)
 		{
@@ -35,6 +34,7 @@ void	*find_target_node(t_list **a, t_list **b)
 			}
 			head_a = head_a->next;
 		}
+
 		if (LONG_MAX == best_match)
 			head_b->target_node = the_smallest_node_in_a(a);
 		else

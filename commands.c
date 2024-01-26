@@ -6,35 +6,26 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 00:52:25 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/25 16:54:22 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/26 03:30:09 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_sa_sb(t_list **list, int flag)
+int	ft_sa_sb(t_list **head, int flag)
 {
-	t_list	*first;
-	t_list	*second;
-	t_list	*temp;
+int	len;
 
-	if (list == NULL || *list == NULL)
-		return (-1);
-	first = *list;
-	second = first->next;
-	if (!second)
-		return (-1);
-	temp = second->next;
-	second->next = first;
-	second->prev = first->prev;
-	first->next = temp;
-	first->prev = second;
-	if (temp)
-		temp->prev = first;
-	if (second->prev)
-		second->prev->next = second;
-	else
-		*list = second;
+	len = stack_len(head);
+	if (NULL == *head || NULL == head || 1 == len)
+		return(1);
+	*head = (*head)->next;
+	(*head)->prev->prev = *head;
+	(*head)->prev->next = (*head)->next;
+	if ((*head)->next)
+		(*head)->next->prev = (*head)->prev;
+	(*head)->next = (*head)->prev;
+	(*head)->prev = NULL;
 	if (flag == 1)
 		write(1, "sa\n", 3);
 	else if (flag == 2)
@@ -55,10 +46,8 @@ int	ft_pa(t_list **a, t_list **b)
 
     if (!b || !*b)
         return (-1);
-    
     head_b = *b;
     *b = head_b->next;
-
     if (*b)
         (*b)->prev = NULL;
 
@@ -88,7 +77,7 @@ int	ft_pb(t_list **a, t_list **b)
         return (-1);
     head_a = *a;
     *a = head_a->next;
-
+	(*a)->prev = NULL;
     if (!*b)
     {
         *b = head_a;
@@ -110,7 +99,7 @@ int	ft_ra_rb(t_list **list, int flag)
 {
 	t_list	*head;
 
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
+	if (list == NULL || *list == NULL)
 		return (-1);
 	head = *list;
 	*list = head->next;

@@ -19,7 +19,6 @@ typedef struct s_list
 	struct s_list	*prev;
 }					t_list;
 
-void read_list(t_list *start_a, t_list *start_b);
 /*-------Error handling-------*/
 long long			ft_atoi(const char *nptr);
 int					ft_strcmp(const char *s1, const char *s2);
@@ -35,7 +34,7 @@ t_list				*ft_lstnew(int nbr);
 void				ft_lstadd_front(t_list **lst, t_list *new);
 void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_free_list(t_list **list);
-void				stack_init(t_list **list, char **argv);
+void				stack_init(t_list **list, char **argv, int split_flag);
 int					ft_count_words(const char *s, char c);
 char				**ft_strcpy(char **tab, const char *s, char c);
 char				**ft_doublefree(char **tab, int k);
@@ -56,7 +55,7 @@ void				ft_rrr(t_list **a, t_list **b);
 /*-------Algo-------*/
 void				tiny_sort(t_list **a);
 void				big_sort(t_list **a, t_list **b);
-/*! : init nodes*/
+/*1 : init nodes*/
 void				ft_push_to_b(t_list **a, t_list **b);
 void				*find_target_node(t_list **a, t_list **b);
 t_list				*the_smallest_node_in_a(t_list **a);

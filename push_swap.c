@@ -6,131 +6,57 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/27 20:36:10 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/27 23:09:34 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void read_list(t_list *start_a, t_list *start_b)
+void	tiny_sort(t_list **a)
 {
-    t_list *current = start_a;
-    t_list *current_b = start_b;
-    int i;
+	t_list	*highest_node;
+	t_list	*head_a;
 
-    i = 0;
-    printf("\n\033[0;32m////--- STACK A ---\\\\\\\\         \033[0;32m////--- STACK B ---\\\\\\\\\n\n");
-    while (current != NULL || current_b != NULL)
-    {
-        if (current)
-            printf("\033[0;36mMaillon address: \033[0;33m%p\033[0m          ", (void *)current);
-        if (current == NULL)
-            printf("                                        ");
-        if (current_b == NULL)
-            printf("\n");
-        if (current_b != NULL)
-            printf("\033[0;36mMaillon address: \033[0;33m%p\033[0m\n", (void *)current_b);
-        if (current)
-            printf("\033[0;36mContent: \033[0;35m%d\033[0m                     ", current->nbr);
-        if (current == NULL)
-            printf("                                        ");
-        if (current_b == NULL)
-            printf("\n");
-        if (current_b != NULL)
-            printf("\033[0;36mContent: \033[0;35m%d\033[0m\n", current_b->nbr);
-        if (current)
-            printf("\033[0;36mRank: \033[0;35m%d\033[0m                        ", current->rank);
-        if (current == NULL)
-            printf("                                        ");
-        if (current_b == NULL)
-            printf("\n");
-        if (current_b != NULL)
-            printf("\033[0;36mRank: \033[0;35m%d\033[0m\n", current_b->rank);
+	highest_node = biggest_node(a);
+	head_a = *a;
+	if (head_a == highest_node)
+		ft_ra_rb(a, 1);
+	else if (head_a->next == highest_node)
+		ft_rra_rrb(a, 1);
+	if ((*a)->nbr > (*a)->next->nbr)
+		ft_sa_sb(a, 1);
+}
 
-        // Print statements for additional data members
-        if (current)
-            printf("\033[0;36mPush Price: \033[0;35m%d\033[0m                ", current->push_price);
-        if (current == NULL)
-            printf("                                        ");
-        if (current_b == NULL)
-            printf("\n");
-        if (current_b != NULL)
-            printf("\033[0;36mPush Price: \033[0;35m%d\033[0m\n", current_b->push_price);
+int	ft_check_error(int argc, char **argv)
+{
+	int	i;
 
-        if (current)
-            printf("\033[0;36mMedian: \033[0;35m%d\033[0m                    ", current->mediane);
-        if (current == NULL)
-            printf("                                        ");
-        if (current_b == NULL)
-            printf("\n");
-        if (current_b != NULL)
-            printf("\033[0;36mMedian: \033[0;35m%d\033[0m\n", current_b->mediane);
-
-        if (current)
-            printf("\033[0;36mCheapest: \033[0;35m%d\033[0m                  ", current->cheapest);
-        if (current == NULL)
-            printf("                                        ");
-        if (current_b == NULL)
-            printf("\n");
-        if (current_b != NULL)
-            printf("\033[0;36mCheapest: \033[0;35m%d\033[0m\n", current_b->cheapest);
-
-        if (current)
-            printf("\033[0;36mSmallest: \033[0;35m%d\033[0m                  ", current->smallest);
-        if (current == NULL)
-            printf("                                        ");
-        if (current_b == NULL)
-            printf("\n");
-        if (current_b != NULL)
-            printf("\033[0;36mSmallest: \033[0;35m%d\033[0m\n", current_b->smallest);
-
-        if (current)
-            printf("\033[0;36mTarget Node address: \033[0;33m%p\033[0m       ", (void *)current->target_node);
-        if (current == NULL)
-            printf("                                        ");
-        if (current_b == NULL)
-            printf("\n");
-        if (current_b != NULL)
-            printf("\033[0;36mTarget Node address: \033[0;33m%p\033[0m\n", (void *)current_b->target_node);
-
-        // Add more similar print statements for other data members as needed
-
-        if (current == NULL)
-            printf("                                        ");
-        if (current_b == NULL)
-            printf("\n");
-        if (current)
-            printf("\033[0;36mLast address: \033[0;33m%p\033[0m              ", (void *)current->prev);
-        if (current == NULL)
-            printf("                                        ");
-        if (current_b == NULL)
-            printf("\n");
-        if (current_b)
-            printf("\033[0;36mLast address: \033[0;33m%p\033[0m\n", (void *)current_b->prev);
-        if (current)
-            printf("\033[0;36mNext address: \033[0;33m%p\033[0m              ", (void *)current->next);
-        if (current == NULL)
-            printf("                                        ");
-        if (current_b == NULL)
-            printf("\n");
-        if (current_b)
-            printf("\033[0;36mNext address: \033[0;33m%p\033[0m\n", (void *)current_b->next);
-        if (current == NULL)
-            printf("                                        ");
-        printf("\033[0;31m-------\033[0m\n");
-        if (current)
-            current = current->next;
-        if (current_b)
-            current_b = current_b->next;
-    }
+	i = 0;
+	if (ft_check_doubles(argv) == -1)
+	{
+		write(2, "Error\n", 6);
+		return (-1);
+	}
+	if (argv[1] == NULL)
+	{
+		write(2, "Error\n", 6);
+		return (-1);
+	}
+	while (++i < argc)
+	{
+		if (ft_check_nbrs(argv[i]) == -1 || ft_check_int(argv[i]) == -1)
+		{
+			write(2, "Error\n", 6);
+			return (-1);
+		}
+	}
+	return (1);
 }
 
 void	big_sort(t_list **a, t_list **b)
 {
-	t_list	*head_b;
 	t_list	*the_smallest;
-	
-	head_b = *b;
+
 	ft_push_to_b(a, b);
 	tiny_sort(a);
 	while (*b != NULL)
@@ -140,7 +66,7 @@ void	big_sort(t_list **a, t_list **b)
 		refreshing_rank_and_mediane(b);
 		set_price(a, b);
 		find_the_cheapest(b);
-		move_nodes(a,b);
+		move_nodes(a, b);
 	}
 	refreshing_rank_and_mediane(a);
 	the_smallest = find_the_smallest(a);
@@ -152,98 +78,44 @@ void	big_sort(t_list **a, t_list **b)
 			ft_rra_rrb(a, 1);
 }
 
-void	ft_push_to_b(t_list **a, t_list **b)
+void	push_swap(t_list **a, char **argv, int split_flag)
 {
-	int	i;
-	int	len;
+	t_list	*b;
 
-	len = stack_len(a);
-	i = 0;
-	while (i < len - 3)
-	{
-		ft_pb(a, b);
-		i++;
-	}
-}
-
-void	tiny_sort(t_list **a)
-{
-	t_list *highest_node;
-	t_list *head_a;
-	
-	highest_node = biggest_node(a);
-	head_a = *a;
-	if (head_a == highest_node)
-		ft_ra_rb(a, 1);
-	else if (head_a->next == highest_node)
-		ft_rra_rrb(a, 1);
-	if ((*a)->nbr > (*a)->next->nbr)
+	b = NULL;
+	stack_init(a, argv, split_flag);
+	if (stack_len(a) == 2)
 		ft_sa_sb(a, 1);
-}
-
-
-int	ft_check_error(int argc, char **argv)
-{
-	int i = 0;
-	if (ft_check_doubles(argv) == -1)
-	{
-		write(2, "Error\n", 6);
-		return (-1);
-	}
-    if (argv[1] == NULL)
-    {
-        write(2, "Error\n", 6);
-                return (-1);
-    }
-	while (++i < argc)
-	{
-		if (ft_check_nbrs(argv[i]) == -1)
-		{
-			write(2, "Error\n", 6);
-				return (-1);
-		}
-		if (ft_check_int(argv[i]) == -1)
-		{
-			write(2, "Error\n", 6);
-				return (-1);
-		}
-	}
-	return (1);
+	else if (stack_len(a) == 3)
+		tiny_sort(a);
+	else
+		big_sort(a, &b);
+	ft_free_list(a);
 }
 
 int	main(int argc, char **argv)
 {
 	t_list	*a;
-	t_list	*b;
-    int split_flag;
-    
-    split_flag = 0;
-	b = NULL;
+	int		split_flag;
+
+	split_flag = 0;
 	if (argc < 2 || (argc == 2 && !argv[1][0]))
 		return (1);
 	else if (argc == 2)
-    {
+	{
 		argv = ft_split(argv[1], ' ');
-        split_flag = 1;
-    }
+		split_flag = 1;
+	}
 	if (ft_check_error(ft_count_tabs(argv), argv) == -1)
-		{
-			if (argc == 2)
-				ft_doublefree(argv, ft_count_tabs(argv));
-			return (1);
-		}
+	{
+		if (argc == 2)
+			ft_doublefree(argv, ft_count_tabs(argv));
+		return (1);
+	}
 	if (ft_is_already_sorted(argv) != -1)
 	{
-		stack_init(&a, argv, split_flag);
-        read_list(a, NULL);
-		if (stack_len(&a) == 2)
-			ft_sa_sb(&a, 1);
-		else if (stack_len(&a) == 3)
-			tiny_sort(&a);
-		else
-			big_sort(&a, &b);
+		push_swap(&a, argv, split_flag);
 		if (argc == 2)
 			ft_doublefree(argv, ft_count_tabs(argv));
 	}
-    ft_free_list(&a);
 }

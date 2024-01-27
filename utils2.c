@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:11:44 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/24 00:55:33 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/27 21:06:29 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,9 @@
 
 int	ft_is_already_sorted(char **argv)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
+
 	i = 1;
 	while (argv[i + 1])
 	{
@@ -32,8 +33,8 @@ int	ft_count_tabs(char **tab)
 {
 	int	i;
 	int	j;
-	i = 0;
 
+	i = 0;
 	while (tab[i])
 	{
 		j = 0;
@@ -43,29 +44,30 @@ int	ft_count_tabs(char **tab)
 	}
 	return (i);
 }
-int stack_len(t_list **list)
+
+int	stack_len(t_list **list)
 {
-	int	i;
-	t_list *head;
-	
+	int		i;
+	t_list	*head;
+
 	i = 0;
 	head = *list;
-
-	while(head)
+	while (head)
 	{
 		i++;
 		head = head->next;
 	}
 	return (i);
 }
-t_list *biggest_node(t_list **list)
+
+t_list	*biggest_node(t_list **list)
 {
-	t_list *head;
+	t_list	*head;
 	int		big_nbr;
 	t_list	*temp;
 
-	 if (!list || !*list)
-        return NULL;
+	if (!list || !*list)
+		return (NULL);
 	head = *list;
 	temp = head;
 	big_nbr = head->nbr;
@@ -81,4 +83,3 @@ t_list *biggest_node(t_list **list)
 	}
 	return (temp);
 }
-

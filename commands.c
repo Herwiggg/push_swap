@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 00:52:25 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/26 03:30:09 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/27 21:07:14 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 int	ft_sa_sb(t_list **head, int flag)
 {
-int	len;
+	int	len;
 
 	len = stack_len(head);
 	if (NULL == *head || NULL == head || 1 == len)
-		return(1);
+		return (1);
 	*head = (*head)->next;
 	(*head)->prev->prev = *head;
 	(*head)->prev->next = (*head)->next;
@@ -42,57 +42,55 @@ void	ft_ss(t_list **a, t_list **b)
 
 int	ft_pa(t_list **a, t_list **b)
 {
-	 t_list *head_b;
+	t_list	*head_b;
 
-    if (!b || !*b)
-        return (-1);
-    head_b = *b;
-    *b = head_b->next;
-    if (*b)
-        (*b)->prev = NULL;
-
-    if (!*a)
-    {
-        *a = head_b;
-        head_b->prev = NULL;
-        head_b->next = NULL;
-    }
-    else
-    {
-        head_b->next = *a;
-        (*a)->prev = head_b;
-        *a = head_b;
-        head_b->prev = NULL;
-    }
-
-    write(1, "pa\n", 3);
-    return (0);
+	if (!b || !*b)
+		return (-1);
+	head_b = *b;
+	*b = head_b->next;
+	if (*b)
+		(*b)->prev = NULL;
+	if (!*a)
+	{
+		*a = head_b;
+		head_b->prev = NULL;
+		head_b->next = NULL;
+	}
+	else
+	{
+		head_b->next = *a;
+		(*a)->prev = head_b;
+		*a = head_b;
+		head_b->prev = NULL;
+	}
+	write(1, "pa\n", 3);
+	return (0);
 }
 
 int	ft_pb(t_list **a, t_list **b)
 {
- t_list *head_a;
+	t_list	*head_a;
 
-    if (!a || !*a)
-        return (-1);
-    head_a = *a;
-    *a = head_a->next;
+	if (!a || !*a)
+		return (-1);
+	head_a = *a;
+	*a = head_a->next;
 	(*a)->prev = NULL;
-    if (!*b)
-    {
-        *b = head_a;
-        head_a->prev = NULL;
-        head_a->next = NULL;
-    }
-    else
-    {
-        head_a->next = *b;
-        (*b)->prev = head_a;
-        *b = head_a;
-        head_a->prev = NULL;
-    }
-    write(1, "pb\n", 3);
-    return (0);
+	if (!*b)
+	{
+		*b = head_a;
+		head_a->prev = NULL;
+		head_a->next = NULL;
+	}
+	else
+	{
+		head_a->next = *b;
+		(*b)->prev = head_a;
+		*b = head_a;
+		head_a->prev = NULL;
+	}
+	write(1, "pb\n", 3);
+	return (0);
 }
 
 int	ft_ra_rb(t_list **list, int flag)

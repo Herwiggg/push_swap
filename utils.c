@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 22:22:16 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/09 23:05:31 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/27 21:06:37 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ int	ft_check_doubles(char **argv)
 
 long long	ft_atoi(const char *nptr)
 {
-	int	i;
-	int	sign;
+	int			i;
+	int			sign;
 	long long	result;
 
 	result = 0;

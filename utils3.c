@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 23:05:32 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/25 18:54:31 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/27 21:05:43 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,22 +49,34 @@ void	insert_mediane(t_list **list, int mediane_pos)
 
 t_list	*find_the_smallest(t_list **a)
 {
-	{
-		t_list *head_a;
-		t_list	*the_smallest;
-		long stock_nbr;
+	t_list	*head_a;
+	t_list	*the_smallest;
+	long	stock_nbr;
 
-		head_a = *a;
-		stock_nbr = LONG_MAX;
-		while (head_a)
+	head_a = *a;
+	stock_nbr = LONG_MAX;
+	while (head_a)
+	{
+		if (head_a->nbr < stock_nbr)
 		{
-			if (head_a->nbr < stock_nbr)
-			{
-				stock_nbr = head_a->nbr;
-				the_smallest = head_a;
-			}
-			head_a = head_a->next;
+			stock_nbr = head_a->nbr;
+			the_smallest = head_a;
 		}
-		return (the_smallest);
+		head_a = head_a->next;
+	}
+	return (the_smallest);
+}
+
+void	ft_push_to_b(t_list **a, t_list **b)
+{
+	int	i;
+	int	len;
+
+	len = stack_len(a);
+	i = 0;
+	while (i < len - 3)
+	{
+		ft_pb(a, b);
+		i++;
 	}
 }

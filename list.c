@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:10:04 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/27 20:09:39 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/27 21:06:53 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	}
 }
 
-
 void	ft_free_list(t_list **list)
 {
 	t_list	*head;
@@ -70,9 +69,9 @@ void	ft_free_list(t_list **list)
 
 void	stack_init(t_list **list, char **argv, int split_flag)
 {
-	int	i;
-	t_list *new_case;
-	int	rank;
+	int		i;
+	t_list	*new_case;
+	int		rank;
 
 	rank = 0;
 	if (split_flag == 1)

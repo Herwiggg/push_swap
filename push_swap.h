@@ -1,10 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/27 21:05:59 by almichel          #+#    #+#             */
+/*   Updated: 2024/01/28 00:00:09 by almichel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include <limits.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 
 typedef struct s_list
 {
@@ -53,11 +64,12 @@ int					ft_rra_rrb(t_list **list, int flag);
 void				ft_rrr(t_list **a, t_list **b);
 
 /*-------Algo-------*/
+void				push_swap(t_list **a, char **argv, int split_flag);
 void				tiny_sort(t_list **a);
 void				big_sort(t_list **a, t_list **b);
 /*1 : init nodes*/
 void				ft_push_to_b(t_list **a, t_list **b);
-void				*find_target_node(t_list **a, t_list **b);
+void				find_target_node(t_list **a, t_list **b);
 t_list				*the_smallest_node_in_a(t_list **a);
 int					list_len(t_list **list);
 void				insert_mediane(t_list **list, int mediane_pos);

@@ -6,24 +6,23 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/23 02:11:18 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/26 01:38:52 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/27 23:59:59 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	*find_target_node(t_list **a, t_list **b)
+void	find_target_node(t_list **a, t_list **b)
 {
 	t_list	*head_a;
 	t_list	*target_node;
 	long	best_match;
 	t_list	*head_b;
-	
+
 	head_b = *b;
-	head_a = *a;
 	while (head_b)
 	{
-		best_match = LONG_MAX; 
+		best_match = LONG_MAX;
 		head_a = *a;
 		while (head_a)
 		{
@@ -34,7 +33,6 @@ void	*find_target_node(t_list **a, t_list **b)
 			}
 			head_a = head_a->next;
 		}
-
 		if (LONG_MAX == best_match)
 			head_b->target_node = the_smallest_node_in_a(a);
 		else
@@ -46,12 +44,12 @@ void	*find_target_node(t_list **a, t_list **b)
 t_list	*the_smallest_node_in_a(t_list **a)
 {
 	t_list	*head_a;
-	long		stock_nbr;
+	long	stock_nbr;
 	t_list	*target_node;
 
 	if (a == NULL)
 		return (NULL);
-	target_node = NULL; 
+	target_node = NULL;
 	head_a = *a;
 	stock_nbr = LONG_MAX;
 	while (head_a)
@@ -66,12 +64,12 @@ t_list	*the_smallest_node_in_a(t_list **a)
 	return (target_node);
 }
 
-
 void	refreshing_rank_and_mediane(t_list **list)
 {
 	t_list	*head;
-	int	i;
-	int	len;
+	int		i;
+	int		len;
+
 	i = 0;
 	head = *list;
 	while (head)
@@ -81,7 +79,7 @@ void	refreshing_rank_and_mediane(t_list **list)
 		i++;
 	}
 	len = list_len(list);
-	if(len % 2 == 0)
+	if (len % 2 == 0)
 		insert_mediane(list, len / 2);
 	else
 		insert_mediane(list, (len / 2) + 1);
@@ -89,14 +87,12 @@ void	refreshing_rank_and_mediane(t_list **list)
 
 void	set_price(t_list **a, t_list **b)
 {
-	t_list	*head_a;
 	t_list	*head_b;
 	int		len_a;
 	int		len_b;
 
 	len_a = list_len(a);
 	len_b = list_len(b);
-	head_a = *a;
 	head_b = *b;
 	while (head_b)
 	{
@@ -117,8 +113,8 @@ void	find_the_cheapest(t_list **b)
 	long	best_match;
 	t_list	*head_b;
 
-	if (!b || !*b) 
-        return;
+	if (!b || !*b)
+		return ;
 	head_b = *b;
 	best_match = LONG_MAX;
 	while (head_b)

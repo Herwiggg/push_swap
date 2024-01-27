@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/19 17:46:18 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/27 19:20:44 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/27 22:42:50 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_list	*return_cheapest(t_list **b)
 {
 	t_list	*head_b;
 
-	if (NULL == b)
+	if (b == NULL)
 		return (NULL);
 	head_b = *b;
 	while (head_b)
@@ -76,6 +76,7 @@ void	reverse_rotate_both(t_list **a, t_list **b, t_list *cheapest_node)
 	refreshing_rank_and_mediane(a);
 	refreshing_rank_and_mediane(b);
 }
+
 void	finish_rotation(t_list **list, t_list *top_node, int flag)
 {
 	t_list	*head;

@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/27 23:09:34 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/28 02:49:38 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,8 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
+		if (!(argv))
+			return (1);
 		split_flag = 1;
 	}
 	if (ft_check_error(ft_count_tabs(argv), argv) == -1)

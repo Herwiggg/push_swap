@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 22:22:16 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/28 01:52:22 by almichel         ###   ########.fr       */
+/*   Updated: 2024/01/29 17:43:22 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_check_nbrs(char *str)
 	int	i;
 
 	i = 0;
-	if (str[i] == '-')
+	if (str[i] == '-' && str[i + 1] != '\0')
 		i++;
 	while (str[i])
 	{

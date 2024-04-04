@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almichel <	almichel@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:11:44 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/27 21:06:29 by almichel         ###   ########.fr       */
+/*   Updated: 2024/04/04 16:57:06 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_is_already_sorted(char **argv)
 	int	i;
 	int	j;
 
-	i = 1;
+	i = 0;
 	while (argv[i + 1])
 	{
 		j = i + 1;

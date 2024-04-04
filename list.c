@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almichel <	almichel@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 21:10:04 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/27 21:06:53 by almichel         ###   ########.fr       */
+/*   Updated: 2024/04/04 18:31:53 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,12 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	{
 		*lst = new;
 		new->prev = NULL;
+		new->next = NULL;
 		return ;
 	}
 	while (last->next)
 		last = last->next;
+	new->next = NULL;
 	last->next = new;
 	new->prev = last;
 }
@@ -73,6 +75,7 @@ void	stack_init(t_list **list, char **argv, int split_flag)
 	t_list	*new_case;
 	int		rank;
 
+	new_case = NULL;
 	rank = 0;
 	if (split_flag == 1)
 		i = 0;

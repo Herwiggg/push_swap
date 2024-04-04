@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almichel <	almichel@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/22 23:05:32 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/27 21:05:43 by almichel         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:18:53 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,30 @@ void	ft_push_to_b(t_list **a, t_list **b)
 		ft_pb(a, b);
 		i++;
 	}
+}
+
+int	ft_check_error(int argc, char **argv)
+{
+	int	i;
+
+	i = 0;
+	if (ft_check_doubles(argv) == -1)
+	{
+		write(2, "Error\n", 6);
+		return (-1);
+	}
+	while (++i < argc)
+	{
+		if (ft_check_nbrs(argv[i]) == -1 || ft_check_int(argv[i]) == -1)
+		{
+			write(2, "Error\n", 6);
+			return (-1);
+		}
+	}
+	if (ft_check_int(argv[0]) == -1)
+	{
+		write(2, "Error\n", 6);
+		return (-1);
+	}
+	return (1);
 }

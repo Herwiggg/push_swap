@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
+/*   By: almichel <	almichel@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/28 02:49:38 by almichel         ###   ########.fr       */
+/*   Updated: 2024/04/04 19:13:50 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,32 +25,6 @@ void	tiny_sort(t_list **a)
 		ft_rra_rrb(a, 1);
 	if ((*a)->nbr > (*a)->next->nbr)
 		ft_sa_sb(a, 1);
-}
-
-int	ft_check_error(int argc, char **argv)
-{
-	int	i;
-
-	i = 0;
-	if (ft_check_doubles(argv) == -1)
-	{
-		write(2, "Error\n", 6);
-		return (-1);
-	}
-	if (argv[1] == NULL)
-	{
-		write(2, "Error\n", 6);
-		return (-1);
-	}
-	while (++i < argc)
-	{
-		if (ft_check_nbrs(argv[i]) == -1 || ft_check_int(argv[i]) == -1)
-		{
-			write(2, "Error\n", 6);
-			return (-1);
-		}
-	}
-	return (1);
 }
 
 void	big_sort(t_list **a, t_list **b)
@@ -93,11 +67,31 @@ void	push_swap(t_list **a, char **argv, int split_flag)
 	ft_free_list(a);
 }
 
+void	pipex(char **argv, int split_flag, t_list *a, int argc)
+{
+	if (ft_check_error(ft_count_tabs(argv), argv) == -1)
+	{
+		if (argc == 2)
+			ft_doublefree(argv, ft_count_tabs(argv));
+		return ;
+	}
+	if (ft_is_already_sorted(argv) != -1)
+	{
+		push_swap(&a, argv, split_flag);
+		if (argc == 2)
+			ft_doublefree(argv, ft_count_tabs(argv));
+	}
+	else
+		if (split_flag == 1)
+			ft_doublefree(argv, ft_count_tabs(argv));
+}
+
 int	main(int argc, char **argv)
 {
 	t_list	*a;
 	int		split_flag;
 
+	a = NULL;
 	split_flag = 0;
 	if (argc < 2 || (argc == 2 && !argv[1][0]))
 		return (1);
@@ -108,16 +102,5 @@ int	main(int argc, char **argv)
 			return (1);
 		split_flag = 1;
 	}
-	if (ft_check_error(ft_count_tabs(argv), argv) == -1)
-	{
-		if (argc == 2)
-			ft_doublefree(argv, ft_count_tabs(argv));
-		return (1);
-	}
-	if (ft_is_already_sorted(argv) != -1)
-	{
-		push_swap(&a, argv, split_flag);
-		if (argc == 2)
-			ft_doublefree(argv, ft_count_tabs(argv));
-	}
+	pipex(argv, split_flag, a, argc);
 }

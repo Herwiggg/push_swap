@@ -6,18 +6,19 @@
 /*   By: almichel <	almichel@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:11:44 by almichel          #+#    #+#             */
-/*   Updated: 2024/04/04 16:57:06 by almichel         ###   ########.fr       */
+/*   Updated: 2024/04/05 17:59:34 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
 int	ft_is_already_sorted(char **argv)
 {
 	int	i;
 	int	j;
 
-	i = 0;
+	i = 1;
 	while (argv[i + 1])
 	{
 		j = i + 1;

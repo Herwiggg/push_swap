@@ -1,6 +1,6 @@
 NAME = push_swap
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 RM = rm -f
 MSRC = push_swap.c split.c algo.c commands.c commands2.c utils.c utils2.c utils3.c list.c inits.c
 

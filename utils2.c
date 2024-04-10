@@ -3,22 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almichel <	almichel@student.42.fr>         +#+  +:+       +#+        */
+/*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 14:11:44 by almichel          #+#    #+#             */
-/*   Updated: 2024/04/05 17:59:34 by almichel         ###   ########.fr       */
+/*   Updated: 2024/04/10 23:56:21 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include <stdio.h>
 
-int	ft_is_already_sorted(char **argv)
+int	ft_is_already_sorted(char **argv, int split_flag)
 {
 	int	i;
 	int	j;
 
-	i = 1;
+	if (split_flag == 1)
+		i = 0;
+	else
+		i = 1;
 	while (argv[i + 1])
 	{
 		j = i + 1;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almichel <	almichel@student.42.fr>         +#+  +:+       +#+        */
+/*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 16:36:42 by almichel          #+#    #+#             */
-/*   Updated: 2024/04/04 19:13:50 by almichel         ###   ########.fr       */
+/*   Updated: 2024/04/11 00:09:06 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,22 @@ void	push_swap(t_list **a, char **argv, int split_flag)
 	ft_free_list(a);
 }
 
-void	pipex(char **argv, int split_flag, t_list *a, int argc)
+void	start(char **argv, int split_flag, t_list *a, int argc)
 {
-	if (ft_check_error(ft_count_tabs(argv), argv) == -1)
+	if (ft_check_error(argv, split_flag) == -1)
 	{
 		if (argc == 2)
 			ft_doublefree(argv, ft_count_tabs(argv));
 		return ;
 	}
-	if (ft_is_already_sorted(argv) != -1)
+	if (ft_is_already_sorted(argv, split_flag) != -1)
 	{
 		push_swap(&a, argv, split_flag);
 		if (argc == 2)
 			ft_doublefree(argv, ft_count_tabs(argv));
 	}
-	else
-		if (split_flag == 1)
-			ft_doublefree(argv, ft_count_tabs(argv));
+	else if (split_flag == 1)
+		ft_doublefree(argv, ft_count_tabs(argv));
 }
 
 int	main(int argc, char **argv)
@@ -102,5 +101,5 @@ int	main(int argc, char **argv)
 			return (1);
 		split_flag = 1;
 	}
-	pipex(argv, split_flag, a, argc);
+	start(argv, split_flag, a, argc);
 }

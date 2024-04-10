@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: almichel <	almichel@student.42.fr>         +#+  +:+       +#+        */
+/*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 21:05:59 by almichel          #+#    #+#             */
-/*   Updated: 2024/04/04 19:19:24 by almichel         ###   ########.fr       */
+/*   Updated: 2024/04/11 00:09:27 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ long long			ft_atoi(const char *nptr);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_check_nbrs(char *str);
 int					ft_check_int(char *str);
-int					ft_check_doubles(char **argv);
-int					ft_check_error(int argc, char **argv);
-int					ft_is_already_sorted(char **argv);
+int					ft_check_doubles(char **argv, int split_flag);
+int					ft_check_error(char **argv, int split_flag);
+int					ft_is_already_sorted(char **argv, int split_flag);
 int					ft_count_tabs(char **tab);
-void				pipex(char **argv, int split_flag, t_list *a, int argc);
+void				start(char **argv, int split_flag, t_list *a, int argc);
 
 /*-------Lists & parsing-------*/
 t_list				*ft_lstnew(int nbr);

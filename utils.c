@@ -6,7 +6,7 @@
 /*   By: almichel <almichel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 22:22:16 by almichel          #+#    #+#             */
-/*   Updated: 2024/01/29 17:43:22 by almichel         ###   ########.fr       */
+/*   Updated: 2024/04/11 00:09:39 by almichel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,15 @@ int	ft_check_int(char *str)
 	return (0);
 }
 
-int	ft_check_doubles(char **argv)
+int	ft_check_doubles(char **argv, int split_flag)
 {
 	int	i;
 	int	j;
 
-	i = 0;
+	if (split_flag == 1)
+		i = 0;
+	else
+		i = 1;
 	while (argv[i])
 	{
 		j = i + 1;
